@@ -40,28 +40,13 @@ For example say you want to post something funny when you hear certain phrases:
 
 ```elixir
 defmodule OverhearHandler do
-  use GenServer
-
-  require Logger
+  use Kuma.Handler
 
   import Regex, only: [match: 2]
 
-  alias ExIrc.Client
-  alias ExIrc.SenderInfo
-  alias Kuma.Bot
-
-  def start_link(conn) do
-    GenServer.start_link(__MODULE__, [conn])
-  end
-
-  def init([conn]) do
-    Client.add_handler conn.client, self()
-    {:ok, conn}
-  end
-
   def handle_info({:received, msg, _sender_info, channel}, conn) do
     cond do
-      match? ~r/(srsly guise|seriously,? guys)/, msg ->
+      match? ~r/srsly guise|seriously,? guys/, msg ->
         Bot.send srsly_guise_img(), channel
       match? ~r/just do it/, msg ->
         Bot.send "https://www.youtube.com/watch?v=hAEQvlaZgKY", channel

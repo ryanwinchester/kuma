@@ -1,20 +1,5 @@
 defmodule Kuma.ExampleHandler do
-  use GenServer
-
-  require Logger
-
-  alias ExIrc.Client
-  alias ExIrc.SenderInfo
-  alias Kuma.Bot
-
-  def start_link(conn) do
-    GenServer.start_link(__MODULE__, [conn])
-  end
-
-  def init([conn]) do
-    Client.add_handler conn.client, self()
-    {:ok, conn}
-  end
+  use Kuma.Handler
 
   def handle_info({:names_list, channel, names_list}, conn) do
     names =
