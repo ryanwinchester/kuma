@@ -17,7 +17,7 @@ defmodule Kuma.LoginHandler do
   end
 
   def handle_info(:logged_in, conn = %{client: client, channels: channels}) do
-    Logger.debug "Logged in to #{conn.host}:#{conn.port}"
+    Logger.debug "Logged in to #{conn.server}:#{conn.port}"
     Logger.debug "Joining channels..."
     Enum.map(channels, &Client.join(client, &1))
     {:noreply, conn}

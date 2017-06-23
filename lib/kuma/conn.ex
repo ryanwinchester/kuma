@@ -1,6 +1,6 @@
 defmodule Kuma.Conn do
     defstruct [
-      host: "chat.freenode.net",
+      server: "chat.freenode.net",
       port: 6667,
       pass: nil,
       nick: nil,
