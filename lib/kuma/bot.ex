@@ -9,6 +9,7 @@ defmodule Kuma.Bot do
 
   ### Client API
 
+  @doc false
   def start_link(client) do
     GenServer.start_link(__MODULE__, client, name: __MODULE__)
   end
@@ -30,14 +31,10 @@ defmodule Kuma.Bot do
 
   ### GenServer API
 
-  @doc """
-  GenServer.init/1 callback
-  """
+  @doc false
   def init(client), do: {:ok, client}
 
-  @doc """
-  GenServer.handle_cast/2 callback
-  """
+  @doc false
   def handle_cast({:msg, message, recipient}, client) do
     Client.msg client, :privmsg, recipient, message
     {:noreply, client}

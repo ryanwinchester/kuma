@@ -3,6 +3,7 @@ defmodule Kuma.Handler do
     do_use()
   end
 
+  @doc false
   def do_use() do
     quote do
       use GenServer
@@ -13,10 +14,12 @@ defmodule Kuma.Handler do
       alias ExIrc.SenderInfo
       alias Kuma.Bot
 
+      @doc false
       def start_link(conn) do
         GenServer.start_link(__MODULE__, [conn])
       end
 
+      @doc false
       def init([conn]) do
         Client.add_handler conn.client, self()
         {:ok, conn}

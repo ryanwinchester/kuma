@@ -10,6 +10,9 @@ defmodule Kuma.Conn do
       channels: []
     ]
 
+    @doc """
+    Build a Conn struct from a map of params.
+    """
     def from_params(params) when is_map(params) do
       Enum.reduce(params, %__MODULE__{}, fn {k, v}, acc ->
         case Map.has_key?(acc, k) do

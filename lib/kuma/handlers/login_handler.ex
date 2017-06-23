@@ -5,10 +5,12 @@ defmodule Kuma.LoginHandler do
 
   alias ExIrc.Client
 
+  @doc false
   def start_link(conn) do
     GenServer.start_link(__MODULE__, [conn])
   end
 
+  @doc false
   def init([conn]) do
     Client.add_handler conn.client, self()
     {:ok, conn}
