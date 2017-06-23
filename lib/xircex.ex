@@ -1,3 +1,5 @@
 defmodule Xircex do
-  @moduledoc false
+  @moduledoc """
+  IRC Bot
+  """
 end

@@ -5,6 +5,7 @@ defmodule Xircex.Application do
 
   use Application
 
+  alias Xirc.Bot
   alias Xircex.Conn
   alias Xircex.ConnectionHandler
   alias Xircex.LoginHandler
@@ -19,7 +20,9 @@ defmodule Xircex.Application do
       |> Conn.from_params()
       |> Map.put(:client, client)
 
-    children =
+    bot = worker(Bot, [client])
+
+    handlers =
       [ConnectionHandler, LoginHandler]
       |> add_custom_handlers()
       |> Enum.map(&worker(&1, [conn]))
@@ -27,7 +30,7 @@ defmodule Xircex.Application do
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Xircex.Supervisor]
-    Supervisor.start_link(children, opts)
+    Supervisor.start_link(bot ++ handlers, opts)
   end
 
   defp add_custom_handlers(defaults) do

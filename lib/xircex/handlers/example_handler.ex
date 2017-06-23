@@ -5,6 +5,7 @@ defmodule Xircex.ExampleHandler do
 
   alias ExIrc.Client
   alias ExIrc.SenderInfo
+  alias Xircex.Bot
 
   def start_link(conn) do
     GenServer.start_link(__MODULE__, [conn])
@@ -24,29 +25,20 @@ defmodule Xircex.ExampleHandler do
     {:noreply, conn}
   end
 
-  def handle_info({:received, msg, %SenderInfo{nick: nick}, channel}, conn) do
-    Logger.info "#{nick} from #{channel}: #{msg}"
+  def handle_info({:received, _msg, %SenderInfo{nick: nick}, channel}, conn) do
+    Bot.send "That's interesting, #{nick}.", channel
     {:noreply, conn}
   end
 
   def handle_info({:mentioned, msg, %SenderInfo{nick: nick}, channel}, conn) do
-    Logger.warn "#{nick} mentioned you in #{channel}"
-    case String.contains?(msg, "hi") do
-      true ->
-        reply = "Hi #{nick}!"
-        Client.msg conn.client, :privmsg, channel, reply
-        Logger.info "Sent #{reply} to #{channel}"
-      false ->
-        :ok
+    if String.contains?(msg, "hi") do
+      Bot.reply "Hi!", channel, nick
     end
     {:noreply, conn}
   end
 
-  def handle_info({:received, msg, %SenderInfo{nick: nick}}, conn) do
-    Logger.warn "#{nick}: #{msg}"
-    reply = "Hi!"
-    Client.msg conn.client, :privmsg, nick, reply
-    Logger.info "Sent #{reply} to #{nick}"
+  def handle_info({:received, _msg, %SenderInfo{nick: nick}}, conn) do
+    Bot.message "Hi!", nick
     {:noreply, conn}
   end
 
