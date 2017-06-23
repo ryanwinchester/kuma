@@ -25,7 +25,6 @@ defmodule Kuma.LoginHandler do
 
   def handle_info({:joined, channel}, conn) do
     Logger.debug "Joined #{channel}"
-    Client.msg conn.client, :privmsg, channel, "Hello world!"
     {:noreply, conn}
   end
 
