@@ -5,7 +5,7 @@ defmodule Xircex.Application do
 
   use Application
 
-  alias Xirc.Bot
+  alias Xircex.Bot
   alias Xircex.Conn
   alias Xircex.ConnectionHandler
   alias Xircex.LoginHandler
