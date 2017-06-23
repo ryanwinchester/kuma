@@ -7,7 +7,7 @@ defmodule Kuma.LoginHandler do
 
   @doc false
   def start_link(conn) do
-    GenServer.start_link(__MODULE__, [conn])
+    GenServer.start_link(__MODULE__, [conn], name: __MODULE__)
   end
 
   @doc false
