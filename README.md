@@ -1,11 +1,10 @@
 # Xircex
 
-**TODO: Add description**
+IRC bot
 
 ## Installation
 
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `xircex` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `xircex` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
@@ -13,7 +12,20 @@ def deps do
 end
 ```
 
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/xircex](https://hexdocs.pm/xircex).
+## Config
 
+```elixir
+config :xircex,
+  bot: %{
+    server: "chat.freenode.net",
+    port: 6697,
+    nick: "xircex_test",
+    user: "xircex_test",
+    name: "Xircex Bot",
+    pass: "",
+    channels: ["#xircex"],
+  },
+  custom_handlers: [
+    Xircex.ExampleHandler
+  ]
+```
