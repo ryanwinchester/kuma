@@ -5,7 +5,7 @@ defmodule Kuma.ConnectionHandler do
 
   alias ExIrc.Client
 
-  def start_link(%{nick: nick} = conn) do
+  def start_link(conn) do
     GenServer.start_link(__MODULE__, [conn], name: __MODULE__)
   end
 
