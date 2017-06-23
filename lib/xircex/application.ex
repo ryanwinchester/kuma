@@ -30,7 +30,7 @@ defmodule Xircex.Application do
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
     opts = [strategy: :one_for_one, name: Xircex.Supervisor]
-    Supervisor.start_link(bot ++ handlers, opts)
+    Supervisor.start_link([bot | handlers], opts)
   end
 
   defp add_custom_handlers(defaults) do
