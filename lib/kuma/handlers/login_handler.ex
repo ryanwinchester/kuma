@@ -1,4 +1,4 @@
-defmodule Xircex.LoginHandler do
+defmodule Kuma.LoginHandler do
   use GenServer
 
   require Logger

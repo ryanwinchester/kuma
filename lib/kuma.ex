@@ -1,4 +1,4 @@
-defmodule Xircex do
+defmodule Kuma do
   @moduledoc """
   IRC Bot
   """

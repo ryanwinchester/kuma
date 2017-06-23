@@ -10,11 +10,11 @@ use Mix.Config
 
 # You can configure for your application as:
 #
-#     config :xircex, key: :value
+#     config :kuma, key: :value
 #
 # And access this configuration in your application as:
 #
-#     Application.get_env(:xircex, :key)
+#     Application.get_env(:kuma, :key)
 #
 # Or configure a 3rd-party app:
 #

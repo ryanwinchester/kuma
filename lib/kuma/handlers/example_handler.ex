@@ -1,19 +1,8 @@
-defmodule Xircex.ExampleHandler do
-  use GenServer
+defmodule Kuma.ExampleHandler do
+  use Kuma.Handler
 
-  require Logger
-
-  alias ExIrc.Client
-  alias ExIrc.SenderInfo
-  alias Xircex.Bot
-
-  def start_link(conn) do
-    GenServer.start_link(__MODULE__, [conn])
-  end
-
-  def init([conn]) do
-    Client.add_handler conn.client, self()
-    {:ok, conn}
+  overhear ~r/hi/, channel, sender do
+    Bot.reply "Hi!", channel, sender.nick
   end
 
   def handle_info({:names_list, channel, names_list}, conn) do

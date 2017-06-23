@@ -1,14 +1,14 @@
-defmodule Xircex.Application do
+defmodule Kuma.Application do
   # See http://elixir-lang.org/docs/stable/elixir/Application.html
   # for more information on OTP Applications
   @moduledoc false
 
   use Application
 
-  alias Xircex.Bot
-  alias Xircex.Conn
-  alias Xircex.ConnectionHandler
-  alias Xircex.LoginHandler
+  alias Kuma.Bot
+  alias Kuma.Conn
+  alias Kuma.ConnectionHandler
+  alias Kuma.LoginHandler
 
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
@@ -16,7 +16,7 @@ defmodule Xircex.Application do
     {:ok, client} = ExIrc.start_link!
 
     conn =
-      Application.get_env(:xircex, :bot)
+      Application.get_env(:kuma, :bot)
       |> Conn.from_params()
       |> Map.put(:client, client)
 
@@ -29,11 +29,11 @@ defmodule Xircex.Application do
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
     # for other strategies and supported options
-    opts = [strategy: :one_for_one, name: Xircex.Supervisor]
+    opts = [strategy: :one_for_one, name: Kuma.Supervisor]
     Supervisor.start_link([bot | handlers], opts)
   end
 
   defp add_custom_handlers(defaults) do
-    defaults ++ Application.get_env(:xircex, :custom_handlers, [])
+    defaults ++ Application.get_env(:kuma, :custom_handlers, [])
   end
 end

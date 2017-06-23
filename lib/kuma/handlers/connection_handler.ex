@@ -1,4 +1,4 @@
-defmodule Xircex.ConnectionHandler do
+defmodule Kuma.ConnectionHandler do
   use GenServer
 
   require Logger

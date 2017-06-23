@@ -1,31 +1,31 @@
-# Xircex
+# Kuma
 
 IRC bot
 
 ## Installation
 
-The package can be installed by adding `xircex` to your list of dependencies in `mix.exs`:
+The package can be installed by adding `kuma` to your list of dependencies in `mix.exs`:
 
 ```elixir
 def deps do
-  [{:xircex, "~> 0.1.0"}]
+  [{:kuma, "~> 0.1.0"}]
 end
 ```
 
 ## Config
 
 ```elixir
-config :xircex,
+config :kuma,
   bot: %{
     server: "chat.freenode.net",
     port: 6697,
-    nick: "xircex_test",
-    user: "xircex_test",
-    name: "Xircex Bot",
+    nick: "kuma_test",
+    user: "kuma_test",
+    name: "Kuma Bot",
     pass: "",
-    channels: ["#xircex"],
+    channels: ["#kuma"],
   },
   custom_handlers: [
-    Xircex.ExampleHandler
+    Kuma.ExampleHandler
   ]
 ```

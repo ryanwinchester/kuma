@@ -1,4 +1,4 @@
-defmodule Xircex.Conn do
+defmodule Kuma.Conn do
     defstruct [
       host: "chat.freenode.net",
       port: 6667,

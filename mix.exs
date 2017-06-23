@@ -1,8 +1,8 @@
-defmodule Xircex.Mixfile do
+defmodule Kuma.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :xircex,
+    [app: :kuma,
      version: "0.1.0",
      elixir: "~> 1.4",
      build_embedded: Mix.env == :prod,
@@ -16,7 +16,7 @@ defmodule Xircex.Mixfile do
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
     [extra_applications: [:logger],
-     mod: {Xircex.Application, []}]
+     mod: {Kuma.Application, []}]
   end
 
   # Dependencies can be Hex packages:
