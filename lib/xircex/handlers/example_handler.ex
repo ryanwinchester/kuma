@@ -34,8 +34,8 @@ defmodule Xircex.ExampleHandler do
     case String.contains?(msg, "hi") do
       true ->
         reply = "Hi #{nick}!"
-        Client.msg conn.client, :privmsg, conn.channel, reply
-        Logger.info "Sent #{reply} to #{conn.channel}"
+        Client.msg conn.client, :privmsg, channel, reply
+        Logger.info "Sent #{reply} to #{channel}"
       false ->
         :ok
     end
