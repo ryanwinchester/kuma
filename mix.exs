@@ -2,12 +2,18 @@ defmodule Kuma.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :kuma,
-     version: "0.1.0",
-     elixir: "~> 1.4",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     deps: deps()]
+    [
+      app: :kuma,
+      version: "0.1.0",
+      elixir: "~> 1.4",
+      build_embedded: Mix.env == :prod,
+      start_permanent: Mix.env == :prod,
+      deps: deps(),
+      description: description(),
+      package: package(),
+      source_url: "https://github.com/ryanwinchester/kuma",
+      name: "Kuma",
+    ]
   end
 
   # Configuration for the OTP application
@@ -15,8 +21,25 @@ defmodule Kuma.Mixfile do
   # Type "mix help compile.app" for more information
   def application do
     # Specify extra applications you'll use from Erlang/Elixir
-    [extra_applications: [:logger],
-     mod: {Kuma.Application, []}]
+    [
+      extra_applications: [:logger],
+      mod: {Kuma.Application, []}
+    ]
+  end
+
+  defp description do
+    """
+    An Elixir IRC Bot
+    """
+  end
+
+  defp package do
+    [
+      name: :kuma,
+      maintainers: ["Ryan Winchester"],
+      licenses: ["Apache 2.0"],
+      links: %{"GitHub" => "https://github.com/ryanwinchester/kuma"},
+    ]
   end
 
   # Dependencies can be Hex packages:

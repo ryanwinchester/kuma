@@ -5,7 +5,7 @@ defmodule Kuma.ExampleHandler do
 
   alias ExIrc.Client
   alias ExIrc.SenderInfo
-  alias Xircex.Bot
+  alias Kuma.Bot
 
   def start_link(conn) do
     GenServer.start_link(__MODULE__, [conn])
