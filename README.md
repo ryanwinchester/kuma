@@ -2,6 +2,10 @@
 
 IRC bot
 
+### Abandoned
+
+##### use [hedwig](https://github.com/hedwig-im/hedwig) and [hedwig_irc](https://github.com/jeffweiss/hedwig_irc)
+
 ## Installation
 
 The package can be installed by adding `kuma` to your list of dependencies in `mix.exs`:
